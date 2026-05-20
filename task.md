@@ -1,0 +1,27 @@
+# Tasks: World Cup 2026 Cinematic Card Battle Game
+
+- `[ ]` Create Vite React Project
+  - `[ ]` Run Vite creation command in workspace
+  - `[ ]` Install Tailwind CSS and verify dependencies
+  - `[ ]` Configure `tailwind.config.js` and `index.css` with cinematic colors and keyframes
+- `[ ]` Generate & Setup Game Assets
+  - `[ ]` Generate premium background textures for card types (Gold, Silver, Bronze, Icon)
+  - `[ ]` Generate high-res cinematic stadium background
+- `[ ]` Implement Player Database & Sound Utilities
+  - `[ ]` Create `src/data/players.js` with 80+ official-rated World Cup players
+  - `[ ]` Create `src/data/questions.js` with 100+ World Cup trivia questions
+  - `[ ]` Create `src/utils/sound.js` using Web Audio API for cinematic sounds (bass drop, whooshes, chimes)
+- `[ ]` Create Core Components
+  - `[ ]` Build `PlayerCard.jsx` with 3D tilt, glare, and rarity styling
+  - `[ ]` Build `NavBar.jsx` with animations
+  - `[ ]` Build `CardModal.jsx` with detailed stat bars and zoom animations
+- `[ ]` Implement Game Screens
+  - `[ ]` Create `HomeScreen.jsx` with parallax design and big CTAs
+  - `[ ]` Create `QuizScreen.jsx` with sound effects and Claude integration option
+  - `[ ]` Create `WalkoutScreen.jsx` (FIFA 23 style cinematic walkout sequence with tunnel, spotlights, flags, and reveal)
+  - `[ ]` Create `BattleScreen.jsx` (1v1 battle arena with 3D card clashes, shake effects, best-of-three comparison)
+  - `[ ]` Create `SquadScreen.jsx` with filters, search, and sorting
+- `[ ]` Final Polish & Verification
+  - `[ ]` Test mobile responsiveness
+  - `[ ]` Validate localStorage persistence
+  - `[ ]` Run build to verify correct bundle creation
