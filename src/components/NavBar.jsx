@@ -31,7 +31,7 @@ export const NavBar = ({
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("home")}>
           <span className="text-2xl">⚽</span>
           <h1 className="font-bebas text-2xl tracking-wider text-white bg-gradient-to-r from-gold to-white bg-clip-text text-transparent">
-            ANTIGRAVITY FC
+            TEAM FC
           </h1>
         </div>
 
@@ -52,6 +52,14 @@ export const NavBar = ({
             }`}
           >
             EARN CARDS
+          </button>
+          <button
+            onClick={() => navigate("draft")}
+            className={`font-bebas text-lg px-3 py-1.5 rounded transition-all ${
+              activeScreen === "draft" ? "text-gold border-b-2 border-gold" : "text-gray-300 hover:text-white"
+            }`}
+          >
+            BUILD 11
           </button>
           <button
             onClick={() => navigate("battle")}
@@ -135,7 +143,7 @@ export const NavBar = ({
       <header className="md:hidden flex items-center justify-between px-4 py-3 bg-navy-900/90 border-b border-gray-800/80 backdrop-blur-md sticky top-0 z-50">
         <div className="flex items-center gap-1.5" onClick={() => navigate("home")}>
           <span className="text-xl">⚽</span>
-          <h1 className="font-bebas text-lg tracking-wider text-white">ANTIGRAVITY</h1>
+          <h1 className="font-bebas text-lg tracking-wider text-white">TEAM FC</h1>
         </div>
 
         <div className="flex items-center gap-2">
@@ -183,6 +191,16 @@ export const NavBar = ({
         >
           <span className="text-lg">🧠</span>
           <span>Quiz</span>
+        </button>
+
+        <button
+          onClick={() => navigate("draft")}
+          className={`flex flex-col items-center gap-0.5 text-[10px] font-medium transition-all ${
+            activeScreen === "draft" ? "text-gold" : "text-gray-400 hover:text-gray-200"
+          }`}
+        >
+          <span className="text-lg">⚽</span>
+          <span>Draft</span>
         </button>
 
         <button

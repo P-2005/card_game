@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { sound } from "../utils/sound";
+import { getPlayerHeadshot } from "../utils/playerImages";
 
 // Custom SVG Avatars with nation-themed jerseys and stylized player silhouettes
 const PlayerAvatar = ({ nation, rarity, position }) => {
@@ -93,7 +94,7 @@ const PlayerAvatar = ({ nation, rarity, position }) => {
   else glowColor = "#d97706"; // Bronze-copper glow
 
   return (
-    <svg className="w-full h-full object-contain" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className="w-full h-full object-contain animate-fade-in" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
       {/* Background radial gradient inside avatar circle */}
       <defs>
         <radialGradient id={`avatar-bg-${rarity}`} cx="50%" cy="50%" r="50%">
@@ -154,6 +155,7 @@ export const PlayerCard = ({
   const cardRef = useRef(null);
   const [tiltStyle, setTiltStyle] = useState({});
   const [glareStyle, setGlareStyle] = useState({ opacity: 0 });
+  const [imageError, setImageError] = useState(false);
 
   // Handle 3D Tilt Effect on mouse movement
   const handleMouseMove = (e) => {
@@ -264,7 +266,7 @@ export const PlayerCard = ({
         <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-[#22c55e]"></div>
         <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-[#22c55e]"></div>
 
-        <div className="text-center font-bebas tracking-widest text-[#22c55e] text-opacity-80">FIFA 26</div>
+        <div className="text-center font-bebas tracking-widest text-[#22c55e] text-opacity-80">TEAM FC 26</div>
 
         {/* Center glowing logo */}
         <div className="flex flex-col items-center justify-center my-auto">
@@ -276,7 +278,7 @@ export const PlayerCard = ({
         </div>
 
         <div className="text-center text-[10px] uppercase font-semibold text-gray-500 tracking-wider">
-          AntiGravity Battle Card
+          Team FC Battle Card
         </div>
       </div>
     );
@@ -289,6 +291,8 @@ export const PlayerCard = ({
     MID: "bg-green-600 text-white",
     FWD: "bg-red-600 text-white"
   };
+
+  const headshotUrl = getPlayerHeadshot(player.id);
 
   return (
     <div
@@ -339,9 +343,19 @@ export const PlayerCard = ({
         </span>
       </div>
 
-      {/* CENTER: Styled Player Avatar Jersey */}
-      <div className="absolute top-8 left-0 right-0 bottom-20 flex items-center justify-center px-6">
-        <PlayerAvatar nation={player.nation} rarity={player.rarity} position={player.position} />
+      {/* CENTER: Player Image with Avatar Fallback */}
+      <div className="absolute top-10 left-0 right-0 bottom-20 flex items-center justify-center px-4 overflow-hidden">
+        {!imageError && headshotUrl ? (
+          <img
+            src={headshotUrl}
+            alt={player.name}
+            referrerPolicy="no-referrer"
+            onError={() => setImageError(true)}
+            className="h-[110%] w-auto object-contain z-10 drop-shadow-[0_8px_12px_rgba(0,0,0,0.65)] transform hover:scale-[1.08] transition-transform duration-300 translate-y-1"
+          />
+        ) : (
+          <PlayerAvatar nation={player.nation} rarity={player.rarity} position={player.position} />
+        )}
       </div>
 
       {/* BOTTOM SECTION: Name, Rarity, Stats */}

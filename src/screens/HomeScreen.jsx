@@ -62,20 +62,20 @@ export const HomeScreen = ({
         {/* Left Side: Cinematic Title & CTAs */}
         <div className="flex-1 text-center md:text-left space-y-6 max-w-xl">
           {/* Top badge */}
-          <div className="inline-flex items-center gap-1.5 bg-gold/10 border border-gold/40 text-gold px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest animate-pulse mx-auto md:mx-0">
-            ⚽ FIFA WORLD CUP 2026 SPECIAL
+          <div className="inline-flex items-center gap-1.5 bg-green-500/10 border border-green-500/40 text-green-400 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest animate-pulse mx-auto md:mx-0">
+            ⚽ TEAM FC SPECIAL DRAFT
           </div>
 
           {/* Heading */}
           <div className="space-y-2">
             <h1 className="font-bebas text-5xl md:text-7xl leading-none text-white tracking-wide uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
-              ANTIGRAVITY <br />
+              TEAM FC <br />
               <span className="bg-gradient-to-r from-yellow-500 via-gold to-yellow-600 bg-clip-text text-transparent">
-                CARD BATTLE 2026
+                DRAFT & BATTLE
               </span>
             </h1>
             <p className="text-gray-400 text-sm md:text-base font-medium max-w-md drop-shadow">
-              Answer challenging World Cup trivia, draft legendary players, and duel the AI in a tactical card battle.
+              Build your fantasy 11 with custom formations, answer challenging trivia, draft legendary players, and duel the AI!
             </p>
           </div>
 
@@ -100,20 +100,31 @@ export const HomeScreen = ({
               EARN PLAYERS 🧠
             </button>
 
+            {/* Build Dream 11 Draft */}
+            <button
+              onClick={() => {
+                sound.playClick();
+                onNavigate("draft");
+              }}
+              className="bg-gradient-to-r from-green-500 via-emerald-600 to-green-600 hover:from-green-400 hover:to-emerald-500 text-white font-bebas text-xl py-4 px-6 rounded-xl shadow-lg border border-green-400 hover:border-green-300 transform hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              BUILD DREAM 11 ⚽
+            </button>
+
             {/* Battle / Kick off */}
             <button
               onClick={handleKickOff}
               disabled={battleLocked}
-              className={`font-bebas text-xl py-4 px-6 rounded-xl border transition-all duration-300 flex items-center justify-center gap-2 shadow-lg ${
+              className={`sm:col-span-2 font-bebas text-xl py-4 px-6 rounded-xl border transition-all duration-300 flex items-center justify-center gap-2 shadow-lg ${
                 battleLocked
                   ? "bg-gray-800/40 border-gray-700/50 text-gray-500 cursor-not-allowed opacity-55"
                   : "bg-transparent border-white hover:bg-white hover:text-black transform hover:scale-105 active:scale-95 text-white"
               }`}
             >
-              {battleLocked ? "🔒 KICK OFF" : "⚔️ KICK OFF"}
+              {battleLocked ? "🔒 KICK OFF ARENA BATTLE" : "⚔️ KICK OFF ARENA BATTLE"}
             </button>
 
-            {/* My Squad (Full width across cols) */}
+            {/* My Squad */}
             <button
               onClick={handleSquad}
               className="sm:col-span-2 bg-navy-900/60 hover:bg-navy-900/90 border border-gray-800 hover:border-gray-700 text-white font-bebas text-lg py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
